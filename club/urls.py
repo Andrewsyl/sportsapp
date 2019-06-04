@@ -19,6 +19,8 @@ from users.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', login, name='login'),
+    path('registration/', registration, name='registration'),
     path('', home, name='home'),
     path('stuff/', stuff, name='stuff'),
     path('contact/', contact, name='contact'),

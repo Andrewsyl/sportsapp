@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Student
-from .forms import StudentCreateForm
+from .forms import StudentCreateForm, Login, RegisterForm
 
 
 # Create your views here.
@@ -22,6 +22,26 @@ def contact(request, *args, **kwargs):
         'my_list': [88, 23, 213, 1231]
     }
     return render(request, 'home.html', context)
+
+
+def login(request):
+    form = Login(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = StudentCreateForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'login.html', context)
+
+def registration(request):
+    form = RegisterForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, 'registration.html', context)
 
 
 def student_create(request):
