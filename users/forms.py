@@ -103,3 +103,16 @@ class StudentCreateForm(forms.ModelForm):
                   'contact_number',
                   'paid'
                   ]
+
+
+class StudentEditForm(StudentCreateForm):
+    class Meta:
+        model = Student
+        fields = ['first_name',
+                  'first_name',
+                  'surname',
+                  'date_of_birth',
+                  'email',
+                  'contact_name',
+                  'contact_number',
+                  ]

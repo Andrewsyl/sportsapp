@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Student, User
-from .forms import StudentCreateForm, Login, RegisterForm
+from .forms import StudentCreateForm, Login, RegisterForm, StudentEditForm
 from django.contrib import auth, messages
 
 
@@ -16,21 +16,6 @@ def users(request):
     return render(request, 'users.html', context)
 
 
-def stuff(request, *args, **kwargs):
-    jim = 'Whataawa test'
-    print(request.user)
-    user = request.user
-    return HttpResponse("Hello World")
-
-
-def contact(request, *args, **kwargs):
-    context = {
-        'user': request.user,
-        'my_list': [88, 23, 213, 1231]
-    }
-    return render(request, 'home.html', context)
-
-
 def login(request):
     form = Login(request.POST or None)
     if form.is_valid():
@@ -39,7 +24,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, "You have successfully logged in")
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/users/')
         else:
             form.add_error(None, "Your email or password was not recognised")
             return render(request, 'login.html', {'form': form})
@@ -71,7 +56,24 @@ def student_create(request):
     return render(request, 'students/student_form.html', context)
 
 
-def student_details(request):
+def student_list(request):
     kids = Student.objects.all()
     context = {'kids': kids}
-    return render(request, 'students/details.html', context)
+    return render(request, 'students/student_list.html', context)
+
+
+def student_details(request, id):
+    kid = get_object_or_404(Student, id=id)
+    context = {'kid': kid}
+    return render(request, 'students/student_details.html', context)
+
+
+def student_edit(request, id):
+    kid = get_object_or_404(Student, id=id)
+    form = StudentEditForm(request.POST or None, instance=kid)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/user')
+    context = {'kid': kid,
+               'form': form}
+    return render(request, 'students/student_edit.html', context)

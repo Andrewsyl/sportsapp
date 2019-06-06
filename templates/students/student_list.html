@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block stuff %}
+<ul>
+    {%for kid in kids%}
+    <li>{{forloop.counter}} - <a href=/student_details/{{kid.id}}>{{kid.first_name}} {{kid.surname}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock stuff %}

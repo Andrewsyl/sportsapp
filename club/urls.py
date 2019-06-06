@@ -23,8 +23,8 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('', home, name='home'),
     path('users/', users, name='users'),
-    path('stuff/', stuff, name='stuff'),
-    path('contact/', contact, name='contact'),
-    path('details/', student_details, name='student_details'),
+    path('student_list/', student_list, name='student_list'),
+    path('student_details/<int:id>', student_details, name='student_details'),
+    path('student_edit/<int:id>', student_edit, name='student_edit'),
     path('student_create/', student_create, name='student_details'),
 ]
