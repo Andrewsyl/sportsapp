@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
 {% block stuff %}
-    <ul>
-        <li>{{ kid.first_name}}</li>
-        <li>{{kid.email}}</li>
-        <li>{{kid.contact_name}}</li>
-    </ul>
-<input type="button" onclick="location.href='/student_edit/{{kid.id}}'" value="Edit Profile" />
+    <div class="container">
+        <ul>
+            <li>{{ kid.first_name}}</li>
+            <li>{{kid.email}}</li>
+            <li>{{kid.contact_name}}</li>
+        </ul>
+    <input type="button" onclick="location.href='/student_edit/{{kid.id}}'" value="Edit Profile" />
+    <input type="button" onclick="location.href='/student_details/{{kid.id}}/delete'" value="Delete Profile" />
+    </div>
 {% endblock stuff %}

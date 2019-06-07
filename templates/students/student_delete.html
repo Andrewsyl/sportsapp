@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+	{% block stuff %}
+	<div class="container">
+		<p>Are you sure you wanted to DELETE {{student.first_name}} {{student.surname}}</p>
+        <form method="post">{% csrf_token %}
+            <p><input type="submit" value="Yes"></p>
+        </form>
+	</div>
+
+	{% endblock stuff %}

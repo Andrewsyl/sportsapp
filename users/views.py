@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Student, User
 from .forms import StudentCreateForm, Login, RegisterForm, StudentEditForm
@@ -66,6 +66,17 @@ def student_details(request, id):
     kid = get_object_or_404(Student, id=id)
     context = {'kid': kid}
     return render(request, 'students/student_details.html', context)
+
+
+def student_delete(request, id):
+    student = get_object_or_404(Student, id=id)
+    if request.method == 'POST':
+        student.delete()
+        return redirect('/student_list/')
+    context = {
+        'student': student
+    }
+    return render(request, "students/student_delete.html", context)
 
 
 def student_edit(request, id):
