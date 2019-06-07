@@ -73,7 +73,7 @@ def student_edit(request, id):
     form = StudentEditForm(request.POST or None, instance=kid)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/user')
+        return HttpResponseRedirect('/student_list')
     context = {'kid': kid,
                'form': form}
     return render(request, 'students/student_edit.html', context)

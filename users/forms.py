@@ -91,7 +91,22 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class StudentCreateForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+    }))
+    surname = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+    }))
     date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=YEARS[::-1]))
+    email = forms.EmailField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+    }))
+    contact_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+    }))
+    contact_number = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+    }))
 
     class Meta:
         model = Student

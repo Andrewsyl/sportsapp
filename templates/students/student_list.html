@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
 {% block stuff %}
-<ul>
-    {%for kid in kids%}
-    <li>{{forloop.counter}} - <a href=/student_details/{{kid.id}}>{{kid.first_name}} {{kid.surname}}</a></li>
-    {% endfor %}
-</ul>
+<div class="container">
+    <h1>Student List</h1>
+    <!--Bootstrap Table using .table class-->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Paid</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%for kid in kids%}
+        <tr>
+            <td>{{forloop.counter}}   <a href=/student_details/{{kid.id}}>{{kid.first_name}} {{kid.surname}}</a></td>
+            <td><a href=/student_details/{{kid.id}}>{{kid.date_of_birth}}</a></td>
+            <td><a href=/student_details/{{kid.id}}>{{kid.email}}</a></td>
+            <td><a href=/student_details/{{kid.id}}>{{kid.paid}}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock stuff %}
