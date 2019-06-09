@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -104,6 +105,7 @@ class User(AbstractBaseUser):
 
 # Create your models here.
 class Student(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, null=True)
     surname = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(null=True)

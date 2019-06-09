@@ -3,7 +3,7 @@
 {% block stuff %}
 <ul>
     {%for user in users%}
-    <li>{{forloop.counter}} - {{user.full_name}} - {{user.email}} - {{user.password}}</li>
+    <li>{{forloop.counter}} - {{user.full_name}} - {{user.email}}</li>
     {% endfor %}
 </ul>
 {% endblock stuff %}

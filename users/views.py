@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Student, User
 from .forms import StudentCreateForm, Login, RegisterForm, StudentEditForm
 from django.contrib import auth, messages
+from django.contrib.auth import logout as django_logout
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -18,12 +20,15 @@ def users(request):
 
 def login(request):
     form = Login(request.POST or None)
+    next = request.GET.get('next')
     if form.is_valid():
         user = auth.authenticate(email=request.POST.get('email'),
                                  password=request.POST.get('password'))
         if user is not None:
             auth.login(request, user)
             messages.success(request, "You have successfully logged in")
+            if next:
+                return redirect(next)
             return HttpResponseRedirect('/users/')
         else:
             form.add_error(None, "Your email or password was not recognised")
@@ -34,6 +39,12 @@ def login(request):
     return render(request, 'login.html', context)
 
 
+def logout(request):
+    django_logout(request)
+    return redirect('/login/')
+
+
+# @login_required(login_url='/login/')
 def registration(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
@@ -48,16 +59,19 @@ def registration(request):
 def student_create(request):
     form = StudentCreateForm(request.POST or None)
     if form.is_valid():
-        form.save()
-        form = StudentCreateForm()
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        return redirect('/student_list/')
     context = {
         'form': form
     }
     return render(request, 'students/student_form.html', context)
 
 
+@login_required(login_url='/login/')
 def student_list(request):
-    kids = Student.objects.all()
+    kids = Student.objects.filter(user=request.user)
     context = {'kids': kids}
     return render(request, 'students/student_list.html', context)
 
