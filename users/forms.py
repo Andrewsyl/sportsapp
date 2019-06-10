@@ -124,7 +124,7 @@ class StudentEditForm(StudentCreateForm):
     class Meta:
         model = Student
         fields = ['first_name',
-                  'first_name',
+                  'surname',
                   'surname',
                   'date_of_birth',
                   'email',
