@@ -102,6 +102,8 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
+class Club(models.Model):
+    name = models.CharField(max_length=40, null=False)
 
 # Create your models here.
 class Student(models.Model):

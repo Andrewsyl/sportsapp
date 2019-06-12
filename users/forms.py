@@ -68,8 +68,15 @@ class UserAdminCreationForm(forms.ModelForm):
 
 
 class Login(forms.Form):
-    email = forms.EmailField(required=True)
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(label="", widget=forms.TextInput(attrs={
+        'class': 'form-control','placeholder': 'Username'
+    }))
+    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={
+        'class': 'form-control','placeholder': 'Password'
+    }))
+
+    # email = forms.EmailField(required=True)
+    # password = forms.CharField(widget=forms.PasswordInput)
 
 
 class UserAdminChangeForm(forms.ModelForm):

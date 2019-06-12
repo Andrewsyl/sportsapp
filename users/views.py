@@ -7,7 +7,7 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+@login_required(login_url='/login/')
 def home(*args, **kwargs):
     return HttpResponse("Hello World")
 
@@ -93,8 +93,9 @@ def student_delete(request, id):
     return render(request, "students/student_delete.html", context)
 
 
+@login_required(login_url='/login/')
 def student_edit(request, id):
-    kid = get_object_or_404(Student, id=id)
+    kid = Student.objects.filter(user=request.user, id=id).first()
     form = StudentEditForm(request.POST or None, instance=kid)
     if form.is_valid():
         form.save()
