@@ -102,12 +102,15 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
+
 class Club(models.Model):
+    user = models.ForeignKey(User, default=None, null=False, on_delete=models.CASCADE)
     name = models.CharField(max_length=40, null=False)
+
 
 # Create your models here.
 class Student(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name=User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, null=True)
     surname = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(null=True)
