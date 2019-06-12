@@ -19,6 +19,8 @@ def users(request):
 
 
 def login(request):
+    if request.user.is_active:
+        return redirect('/')
     form = Login(request.POST or None)
     next = request.GET.get('next')
     if form.is_valid():
