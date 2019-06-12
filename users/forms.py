@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student
+from .models import Student, Club
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
@@ -69,10 +69,10 @@ class UserAdminCreationForm(forms.ModelForm):
 
 class Login(forms.Form):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={
-        'class': 'form-control','placeholder': 'Username'
+        'class': 'form-control', 'placeholder': 'Username'
     }))
     password = forms.CharField(label="", widget=forms.PasswordInput(attrs={
-        'class': 'form-control','placeholder': 'Password'
+        'class': 'form-control', 'placeholder': 'Password'
     }))
 
     # email = forms.EmailField(required=True)
@@ -138,3 +138,9 @@ class StudentEditForm(StudentCreateForm):
                   'contact_name',
                   'contact_number',
                   ]
+
+
+class ClubCreateForm(forms.ModelForm):
+    class Meta:
+        model = Club
+        fields = ['name']
