@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Student, User, Club
-from .forms import StudentCreateForm, ClubCreateForm, Login, RegisterForm, StudentEditForm
+from .models import Student, User, Club, Team
+from .forms import StudentCreateForm, ClubCreateForm, Login, RegisterForm, StudentEditForm, TeamCreateForm
 from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
@@ -126,4 +126,18 @@ def club_create(request):
     context = {
         'form': form
     }
-    return render(request, 'students/student_form.html', context)
+    return render(request, 'club_create.html', context)
+
+
+@login_required(login_url='/login/')
+def team_create(request):
+    form = TeamCreateForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        return redirect('/team_list/')
+    context = {
+        'form': form
+    }
+    return render(request, 'team_create.html', context)

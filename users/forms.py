@@ -144,3 +144,9 @@ class ClubCreateForm(forms.ModelForm):
     class Meta:
         model = Club
         fields = ['name']
+
+
+class TeamCreateForm(forms.ModelForm):
+    class Meta:
+        model = Club
+        fields = ['name']

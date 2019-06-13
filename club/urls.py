@@ -33,6 +33,7 @@ urlpatterns = [
     path('student_edit/<int:id>', student_edit, name='student_edit'),
     path('student_create/', student_create, name='student_details'),
     path('club_create/', club_create, name='club_details'),
+    path('team_create/', team_create, name='team_details'),
 ]
 
 if settings.DEBUG:
