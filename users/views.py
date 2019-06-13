@@ -12,6 +12,7 @@ def home(*args, **kwargs):
     return HttpResponse("Hello World")
 
 
+@login_required(login_url='/login/')
 def users(request):
     users = User.objects.all()
     context = {'users': users}
@@ -58,6 +59,7 @@ def registration(request):
     return render(request, 'registration.html', context)
 
 
+@login_required(login_url='/login/')
 def student_create(request):
     form = StudentCreateForm(request.POST or None)
     if form.is_valid():
@@ -78,12 +80,14 @@ def student_list(request):
     return render(request, 'students/student_list.html', context)
 
 
+@login_required(login_url='/login/')
 def student_details(request, id):
     kid = get_object_or_404(Student, id=id)
     context = {'kid': kid}
     return render(request, 'students/student_details.html', context)
 
 
+@login_required(login_url='/login/')
 def student_delete(request, id):
     student = get_object_or_404(Student, id=id)
     if request.method == 'POST':

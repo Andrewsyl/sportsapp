@@ -108,9 +108,15 @@ class Club(models.Model):
     name = models.CharField(max_length=40, null=False)
 
 
+class Team(models.Model):
+    club = models.ForeignKey(Club, verbose_name=Club, on_delete=models.CASCADE)
+
+
 # Create your models here.
 class Student(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
+    club = models.ForeignKey(Club, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, null=True)
     surname = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(null=True)
