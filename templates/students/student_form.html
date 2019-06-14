@@ -5,6 +5,11 @@
 	<div class="container">
 		<form method="POST">{% csrf_token %}
 			{{form.as_p}}
+			<!--<select>-->
+				<!--{% for team in teams %}-->
+					<!--<option value="{{ team.id }}">{{ team.name }}</option>-->
+				<!--{% endfor %}-->
+			<!--</select>-->
 			<input type="submit" value="Save" name="">
 		</form>
 	</div>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block stuff %}
-<div class="container">
+    <div class="container">
     <h1>Student List</h1>
     <a href="/student_create" class="btn btn-info" role="button">Create New Student +</a>
     <table class="table">
@@ -10,6 +10,7 @@
             <th>Name</th>
             <th>Date of Birth</th>
             <th>Email</th>
+            <th>Team</th>
             <th>Paid</th>
         </tr>
         </thead>
@@ -19,6 +20,7 @@
             <td>{{forloop.counter}}   <a href=/student_details/{{kid.id}}>{{kid.first_name}} {{kid.surname}}</a></td>
             <td><a href=/student_details/{{kid.id}}>{{kid.date_of_birth}}</a></td>
             <td><a href=/student_details/{{kid.id}}>{{kid.email}}</a></td>
+            <td><a href=/student_details/{{kid.id}}>{{kid.team}}</a></td>
             <td><a href=/student_details/{{kid.id}}>{{kid.paid}}</a></td>
         </tr>
         {% endfor %}

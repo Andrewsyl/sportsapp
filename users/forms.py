@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student, Club
+from .models import Student, Club, Team
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
@@ -123,7 +123,8 @@ class StudentCreateForm(forms.ModelForm):
                   'email',
                   'contact_name',
                   'contact_number',
-                  'paid'
+                  'paid',
+                  'team'
                   ]
 
 
@@ -137,6 +138,7 @@ class StudentEditForm(StudentCreateForm):
                   'email',
                   'contact_name',
                   'contact_number',
+                  'team'
                   ]
 
 
@@ -148,5 +150,5 @@ class ClubCreateForm(forms.ModelForm):
 
 class TeamCreateForm(forms.ModelForm):
     class Meta:
-        model = Club
+        model = Team
         fields = ['name']

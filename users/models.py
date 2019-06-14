@@ -107,16 +107,23 @@ class Club(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
     name = models.CharField(max_length=40, null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Team(models.Model):
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=40, null=True)
     club = models.ForeignKey(Club, verbose_name=Club, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 # Create your models here.
 class Student(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, null=True, blank=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, null=True)
     surname = models.CharField(max_length=20, null=True)
     date_of_birth = models.DateField(null=True)

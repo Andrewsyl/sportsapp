@@ -61,21 +61,25 @@ def registration(request):
 
 @login_required(login_url='/login/')
 def student_create(request):
+    club = request.user.club
+    teams = Team.objects.filter(club=club)
     form = StudentCreateForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
-        instance.user = request.user
+        instance.club = club
         instance.save()
         return redirect('/student_list/')
     context = {
-        'form': form
+        'form': form,
+        'teams': teams
     }
     return render(request, 'students/student_form.html', context)
 
 
 @login_required(login_url='/login/')
 def student_list(request):
-    kids = Student.objects.filter(user=request.user)
+    user = request.user
+    kids = Student.objects.filter(club=user.club)
     context = {'kids': kids}
     return render(request, 'students/student_list.html', context)
 
@@ -101,7 +105,8 @@ def student_delete(request, id):
 
 @login_required(login_url='/login/')
 def student_edit(request, id):
-    kid = Student.objects.filter(user=request.user, id=id).first()
+    user = request.user
+    kid = Student.objects.filter(club=user.club, id=id).first()
     form = StudentEditForm(request.POST or None, instance=kid)
     if form.is_valid():
         form.save()
@@ -120,7 +125,7 @@ def club_create(request):
     form = ClubCreateForm(request.POST or None, instance=club_instance)
     if form.is_valid():
         instance = form.save(commit=False)
-        instance.user = request.user
+        # instance.club = request.club
         instance.save()
         return redirect('/student_list/')
     context = {
@@ -131,13 +136,22 @@ def club_create(request):
 
 @login_required(login_url='/login/')
 def team_create(request):
+    club = request.user.club
     form = TeamCreateForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
-        instance.user = request.user
+        instance.club = club
         instance.save()
         return redirect('/team_list/')
     context = {
         'form': form
     }
     return render(request, 'team_create.html', context)
+
+
+@login_required(login_url='/login/')
+def team_list(request):
+    club = request.user.club
+    teams = Team.objects.filter(club=club)
+    context = {'teams': teams}
+    return render(request, 'team_list.html', context)
