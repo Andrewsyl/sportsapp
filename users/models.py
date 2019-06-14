@@ -131,3 +131,8 @@ class Student(models.Model):
     contact_name = models.CharField(max_length=20, null=True)
     contact_number = models.IntegerField(null=True)
     paid = models.NullBooleanField(default=False)
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
