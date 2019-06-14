@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block stuff %}
-    <div class="container">
+<div class="container">
     <h1>Team List</h1>
     <a href="/team_create" class="btn btn-info" role="button">Create New Team +</a>
     <table class="table">
         <thead>
         <tr>
-            <th>Number</th>
             <th>Name</th>
+            <th>Number of Students</th>
         </tr>
         </thead>
         <tbody>
         {%for team in teams%}
         <tr>
-            <td>{{forloop.counter}}<a href=/student_details/{{kid.id}}>{{kid.first_name}} {{kid.surname}}</a></td>
-            <td><a href=/student_details/{{kid.id}}>{{team.name}}</a></td>
+            <td>{{forloop.counter}} <a href=/team_details/{{team.id}}>{{team.name}}</a></td>
+            <td><a href=/team_details/{{team.id}}>{{team.student_set.all.count}}</a></td>
         </tr>
         {% endfor %}
         </tbody>

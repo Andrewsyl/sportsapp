@@ -35,6 +35,8 @@ urlpatterns = [
     path('club_create/', club_create, name='club_create'),
     path('team_create/', team_create, name='team_create'),
     path('team_list/', team_list, name='team_list'),
+    path('team_details/<int:id>', team_details, name='team_details'),
+    path('team_edit/<int:id>', team_edit, name='team_edit'),
 ]
 
 if settings.DEBUG:

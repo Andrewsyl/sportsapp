@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block stuff %}
+<div class="container">
+    <p>{{team.name}}</p>
+    <ul>
+        {% for kid in kids %}
+        <li>{{ kid.first_name}} {{ kid.surname}}</li>
+        {% endfor %}
+    </ul>
+    <input type="button" onclick="location.href='/team_edit/{{team.id}}'" value="Edit Profile"/>
+    <input type="button" onclick="location.href='/student_details/{{kid.id}}/delete'" value="Delete Profile"/>
+</div>
+{% endblock stuff %}

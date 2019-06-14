@@ -152,3 +152,9 @@ class TeamCreateForm(forms.ModelForm):
     class Meta:
         model = Team
         fields = ['name']
+
+
+class TeamEditForm(TeamCreateForm):
+    class Meta:
+        model = Team
+        fields = ['name']
