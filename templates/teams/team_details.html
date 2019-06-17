@@ -8,7 +8,7 @@
         <li>{{ kid.first_name}} {{ kid.surname}}</li>
         {% endfor %}
     </ul>
-    <input type="button" onclick="location.href='/team_edit/{{team.id}}'" value="Edit Profile"/>
-    <input type="button" onclick="location.href='/student_details/{{kid.id}}/delete'" value="Delete Profile"/>
+    <input type="button" onclick="location.href='/team_edit/{{team.id}}'" value="Edit Team"/>
+    <input type="button" onclick="location.href='/student_details/{{kid.id}}/delete'" value="Delete Team"/>
 </div>
 {% endblock stuff %}

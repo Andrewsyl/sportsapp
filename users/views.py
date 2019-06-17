@@ -138,6 +138,7 @@ def club_create(request):
 def team_list(request):
     club = request.user.club
     teams = Team.objects.filter(club=club)
+    team_set = teams[0].student_set.all()
     context = {'teams': teams}
     return render(request, 'teams/team_list.html', context)
 

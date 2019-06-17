@@ -15,7 +15,7 @@
         {%for team in teams%}
         <tr>
             <td>{{forloop.counter}} <a href=/team_details/{{team.id}}>{{team.name}}</a></td>
-            <td><a href=/team_details/{{team.id}}>{{team.student_set.all.count}}</a></td>
+            <td><a href=/team_details/{{team.id}}>{{team.student_set.all.count}} - {% for kid in team.student_set.all %}{{kid.first_name}} {%endfor%}</a></td>
         </tr>
         {% endfor %}
         </tbody>
