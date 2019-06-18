@@ -17,16 +17,19 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from users.views import *
+from accounts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
-    path('registration/', registration, name='registration'),
     path('', home, name='home'),
-    path('users/', users, name='users'),
+    # path('registration/', registration, name='registration'),
+    # path('', home, name='home'),
+    # path('users/', users, name='users'),
     path('student_list/', student_list, name='student_list'),
     path('student_details/<int:id>', student_details, name='student_details'),
     path('student_details/<int:id>/delete', student_delete, name='student_delete'),
@@ -37,6 +40,7 @@ urlpatterns = [
     path('team_list/', team_list, name='team_list'),
     path('team_details/<int:id>', team_details, name='team_details'),
     path('team_edit/<int:id>', team_edit, name='team_edit'),
+    path('team_delete/<int:id>', team_edit, name='team_edit'),
 ]
 
 if settings.DEBUG:
