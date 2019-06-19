@@ -1,12 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.conf import settings
 from accounts.models import User
 
 
 class Club(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=40, null=False)
+    user = models.OneToOneField(User, verbose_name=User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=40, null=False, default='New Club')
 
     def __str__(self):
         return self.name

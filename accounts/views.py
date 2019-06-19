@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render, get_object_or_404,get_list_or_404, redirect
+from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import User
 from .forms import Login, RegisterForm
@@ -17,7 +17,9 @@ def home(request):
 
 @login_required(login_url='/login/')
 def users(request):
-    users = get_list_or_404(User)
+    user = request.user
+    users = get_list_or_404(User, club=user.club)
+    # users = User.objects.all()
     context = {'users': users}
     return render(request, 'users.html', context)
 
@@ -35,7 +37,7 @@ def login(request):
             messages.success(request, "You have successfully logged in")
             if next:
                 return redirect(next)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/student_list')
         else:
             form.add_error(None, "Your email or password was not recognised")
             return render(request, 'login.html', {'form': form})
@@ -55,7 +57,7 @@ def registration(request):
     form = RegisterForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/accounts/users/')
     context = {
         'form': form
     }

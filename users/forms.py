@@ -3,7 +3,7 @@ from .models import Student, Club, Team
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import User
+# from .models import User
 
 YEARS = [x for x in range(1970, 2019)]
 
