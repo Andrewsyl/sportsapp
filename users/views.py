@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Student, User, Club, Team
+from .models import Student, Club, Team
 from .forms import StudentCreateForm, ClubCreateForm, StudentEditForm, TeamCreateForm, TeamEditForm
 from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
@@ -66,14 +66,10 @@ def student_edit(request, id):
 
 @login_required(login_url='/login/')
 def club_create(request):
-    try:
-        club_instance = Club.objects.get(user=request.user)
-    except Club.DoesNotExist:
-        club_instance = Club(user=request.user)
-    form = ClubCreateForm(request.POST or None, instance=club_instance)
+    form = ClubCreateForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
-        # instance.club = request.club
+        # request.user.club = Club()
         instance.save()
         return redirect('/student_list/')
     context = {

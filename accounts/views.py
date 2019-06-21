@@ -3,8 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import User
+from .models import User, Club
 from .forms import Login, RegisterForm
+from users.forms import ClubCreateForm
 from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
@@ -18,6 +19,7 @@ def home(request):
 @login_required(login_url='/login/')
 def users(request):
     user = request.user
+    club = user.club.student_set
     users = get_list_or_404(User, club=user.club)
     # users = User.objects.all()
     context = {'users': users}
@@ -54,11 +56,22 @@ def logout(request):
 
 # @login_required(login_url='/login/')
 def registration(request):
+    new_club = False
+    try:
+        club = request.user.club
+    except:
+        club = ClubCreateForm(request.POST or None)
+        new_club = True
     form = RegisterForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        if new_club:
+            club = club.save()
+        instance = form.save(commit=False)
+        instance.club = club
+        instance.save()
         return HttpResponseRedirect('/accounts/users/')
     context = {
-        'form': form
+        'form': form,
+        'form_club': club
     }
     return render(request, 'registration.html', context)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
+from users.models import Club
 
 
 # Create your models here.
@@ -61,6 +62,7 @@ class User(AbstractBaseUser):
     staff = models.NullBooleanField(default=False, blank=True)  # a admin user; non super-user
     admin = models.NullBooleanField(default=False, blank=True)  # a superuser
     # notice the absence of a "Password field", that's built in.
+    club = models.ForeignKey(Club, on_delete=models.CASCADE)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name']  # Email & Password are required by default.
