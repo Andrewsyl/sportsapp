@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import include, path
 from users.views import *
 from accounts.views import *
+from timetables.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),

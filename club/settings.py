@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'accounts',
+    'timetables'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
