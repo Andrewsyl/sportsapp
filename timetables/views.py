@@ -8,6 +8,7 @@ from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 @login_required(login_url='/login/')
@@ -19,10 +20,8 @@ def create_timetable(request):
         instance = form.save(commit=False)
         instance.club = club
         instance.save()
-        return redirect('/student_list/')
+        return redirect('timetables/create_timetable.html')
     context = {
         'form': form,
     }
     return render(request, 'timetables/create_timetable.html', context)
-
-

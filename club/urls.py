@@ -25,6 +25,7 @@ from timetables.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('timetables/', include('timetables.urls')),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('', home, name='home'),
