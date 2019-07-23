@@ -15,8 +15,9 @@ DAYS = (
 # Create your models here.
 class Day(models.Model):
     club = models.ForeignKey(Club, verbose_name=Club, on_delete=models.CASCADE, null=True)
-    day = models.CharField(max_length=200, choices=DAYS)
+    name = models.CharField(max_length=200, choices=DAYS)
 
 
-class TimeSlots(models.Model):
+class Periods(models.Model):
     day = models.ForeignKey(Day, verbose_name=Day, on_delete=models.CASCADE, null=True)
+    time = models.TimeField()
