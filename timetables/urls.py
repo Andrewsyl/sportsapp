@@ -5,7 +5,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('create_timetable/', views.create_timetable, name='create_timetable'),
+    path('create_timetable_days/', views.create_timetable_days, name='create_timetable_days'),
+    path('create_timetable_times/', views.create_timetable_times, name='create_timetable_times'),
 ]
 
 if settings.DEBUG:

@@ -13,7 +13,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login/')
 def home(request):
-    return HttpResponse("Hello World")
+    return redirect('/accounts/users/')
+    # return HttpResponse("Hello World")
 
 
 @login_required(login_url='/login/')

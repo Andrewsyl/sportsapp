@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block stuff %}
+
+<div class="container">
+    <form method="POST">{% csrf_token %}
+        {% for day in days %}
+        {{day}}
+        {% endfor %}
+        <input type="submit" value="Save" name="">
+    </form>
+</div>
+{% endblock stuff %}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import Day,Periods
+from .models import Day, Periods
 
 DAYS = (
     (1, "Monday"),
@@ -16,11 +16,11 @@ DAYS = (
 
 
 class TimetableCreateForm(forms.ModelForm):
-    my_field = forms.MultipleChoiceField(choices=DAYS, widget=forms.CheckboxSelectMultiple())
+    Days = forms.MultipleChoiceField(choices=DAYS, widget=forms.CheckboxSelectMultiple())
 
     class Meta:
         model = Day
-        fields = ['my_field']
+        fields = ['Days']
 
 
 class PeriodCreateForm(forms.ModelForm):
@@ -28,4 +28,4 @@ class PeriodCreateForm(forms.ModelForm):
 
     class Meta:
         model = Periods
-        fields = ['my_field']
+        fields = ['time']
