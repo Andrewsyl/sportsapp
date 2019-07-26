@@ -20,4 +20,6 @@ class Day(models.Model):
 
 class Periods(models.Model):
     day = models.ForeignKey(Day, verbose_name=Day, on_delete=models.CASCADE, null=True)
-    time = models.TimeField()
+    start_time = models.TimeField(null=True)
+    end_time = models.TimeField(null=True)
+

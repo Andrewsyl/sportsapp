@@ -24,8 +24,6 @@ class TimetableCreateForm(forms.ModelForm):
 
 
 class PeriodCreateForm(forms.ModelForm):
-    my_field = forms.MultipleChoiceField(choices=DAYS, widget=forms.CheckboxSelectMultiple())
-
     class Meta:
         model = Periods
-        fields = ['time']
+        fields = ['start_time', 'end_time']
