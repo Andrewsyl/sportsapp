@@ -32,15 +32,14 @@ def create_timetable_days(request):
 @login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
-    form = PeriodCreateForm()
+    form = PeriodCreateForm(request.POST or None)
     days = Day.objects.filter(club=club)
     if form.is_valid():
-        pass
-        # for item in form['my_field']:
-        #     if item.data['selected']:
-        #         day = Day(name=item.data['label'], club=club)
-        #         day.save()
-        # return redirect('timetables/create_timetable_days.html')
+        for item in form['my_field']:
+            if item.data['selected']:
+                day = Day(name=item.data['label'], club=club)
+                day.save()
+        return redirect('timetables/create_timetable_days.html')
     context = {
         'form': form,
         'days': days

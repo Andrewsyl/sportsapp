@@ -11,7 +11,6 @@ DAYS = (
     (7, "Sunday"),
 )
 
-HOURS = ((1, '00'), (2, '05'), (3, '10'), (4, '15'), (5, '20'))
 MINUTES = ()
 
 
@@ -23,5 +22,5 @@ class Day(models.Model):
 
 class Periods(models.Model):
     day = models.ForeignKey(Day, verbose_name=Day, on_delete=models.CASCADE, null=True)
-    start_time = models.TimeField(null=True, choices=HOURS)
-    end_time = models.TimeField(null=True)
+    start_time = models.CharField(max_length=200, null=True)
+    end_time = models.CharField(max_length=200, null=True)

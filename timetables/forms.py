@@ -13,7 +13,7 @@ DAYS = (
     (6, "Saturday"),
     (7, "Sunday"),
 )
-
+HOURS = ((1, '00'), (2, '05'), (3, '10'), (4, '15'), (5, '20'))
 
 class TimetableCreateForm(forms.ModelForm):
     Days = forms.MultipleChoiceField(choices=DAYS, widget=forms.CheckboxSelectMultiple())
@@ -24,6 +24,14 @@ class TimetableCreateForm(forms.ModelForm):
 
 
 class PeriodCreateForm(forms.ModelForm):
+    start_time = forms.ChoiceField(
+        required=False,
+        choices=HOURS,
+    )
+    end_time = forms.ChoiceField(
+        required=False,
+        choices=HOURS,
+    )
     class Meta:
         model = Periods
         fields = ['start_time', 'end_time']
