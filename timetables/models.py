@@ -2,7 +2,6 @@ from django.db import models
 from accounts.models import Club
 
 
-# Create your models here.
 class Day(models.Model):
     club = models.ForeignKey(Club, verbose_name=Club, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200)

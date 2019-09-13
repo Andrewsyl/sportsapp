@@ -13,7 +13,7 @@ DAYS = (
     (6, "Saturday"),
     (7, "Sunday"),
 )
-HOURS = ((1, '00'), (2, '05'), (3, '10'), (4, '15'), (5, '20'))
+HOURS = (('00', '00'), ('05', '05'), ('10', '10'), ('15', '15'), ('20', '20'))
 
 
 class TimetableCreateForm(forms.ModelForm):
@@ -25,7 +25,8 @@ class TimetableCreateForm(forms.ModelForm):
 
 
 class PeriodCreateForm(forms.ModelForm):
-    start_time = forms.ChoiceField(widget=forms.Select, choices=HOURS)
+    start_time = forms.ChoiceField(required=False,
+                                   choices=HOURS, )
     end_time = forms.ChoiceField(
         required=False,
         choices=HOURS,
