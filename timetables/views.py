@@ -36,7 +36,7 @@ def create_timetable_times(request):
     club = request.user.club
     days = Day.objects.filter(club=club)
     Periods.objects.all().delete()
-    PeriodFormSet = modelformset_factory(Periods, form=PeriodCreateForm, extra=1 if len(Periods.objects()) > 0 else 0)
+    PeriodFormSet = modelformset_factory(Periods, form=PeriodCreateForm, extra=0 if len(Periods.objects.all()) > 0 else len(Day.objects.all()))
     form = PeriodFormSet(request.POST or None)
     if form.is_valid():
         for k in form:
@@ -46,8 +46,9 @@ def create_timetable_times(request):
             period.save()
 
         return redirect('/')
+
     context = {
         'form': form,
-        'days': days
+        'days': days,
     }
     return render(request, 'timetables/create_timetable_times.html', context)
