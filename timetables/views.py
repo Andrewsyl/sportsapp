@@ -42,10 +42,10 @@ def create_timetable_times(request):
     # form = PeriodFormSet(request.POST or None)
     if request.POST:
         if [cf.is_valid() for cf in forms]:
-            for k in enumerate(forms):
+            for n, k in enumerate(forms):
                 start_time = k['start_time'].data
                 end_time = k['end_time'].data
-                period = Periods(start_time=start_time, end_time=end_time, day=k)
+                period = Periods(start_time=start_time, end_time=end_time, day=Day.objects.all()[n])
                 period.save()
 
             return redirect('/')
