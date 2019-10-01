@@ -34,12 +34,9 @@ def create_timetable_days(request):
 @login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
+    # Periods.objects.all().delete()
     days = Day.objects.filter(club=club)
-    pps = Periods.objects.all()
-    # PeriodFormSet = modelformset_factory(Periods, form=PeriodCreateForm, extra=0 if len(Periods.objects.all()) > 0 else len(Day.objects.all()))
-    forms = [PeriodCreateForm(request.POST, prefix=str(day.name), instance=Periods()) for day in Day.objects.all()]
-
-    # form = PeriodFormSet(request.POST or None)
+    forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in Day.objects.all()]
     if request.POST:
         if [cf.is_valid() for cf in forms]:
             for n, k in enumerate(forms):
@@ -55,25 +52,3 @@ def create_timetable_times(request):
         'days': days,
     }
     return render(request, 'timetables/create_timetable_times.html', context)
-
-# @login_required(login_url='/login/')
-# def create_timetable_times(request):
-#     club = request.user.club
-#     days = Day.objects.filter(club=club)
-#     Periods.objects.all().delete()
-#     PeriodFormSet = modelformset_factory(Periods, form=PeriodCreateForm, extra=0 if len(Periods.objects.all()) > 0 else len(Day.objects.all()))
-#     form = PeriodFormSet(request.POST or None)
-#     if form.is_valid():
-#         for k in form:
-#             start_time = k.cleaned_data['start_time']
-#             end_time = k.cleaned_data['end_time']
-#             period = Periods(start_time=start_time, end_time=end_time)
-#             period.save()
-#
-#         return redirect('/')
-#
-#     context = {
-#         'form': form,
-#         'days': days,
-#     }
-#     return render(request, 'timetables/create_timetable_times.html', context)
