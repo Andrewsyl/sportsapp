@@ -16,7 +16,9 @@
     <link rel="stylesheet" type="text/css"  href="../static/css/index.css">
 </head>
 <body>
-{% include 'navbar.html' %}
+{% if request.user.is_active %}
+    {% include 'navbar.html' %}
+{% endif %}
 
 {% block stuff %}
 {% endblock %}
