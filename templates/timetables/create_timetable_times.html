@@ -7,12 +7,10 @@
         {% for form in forms%}
         <div class="box">
             {{form.prefix}}
-            <div id="11">{%for f in form%}
-                {{f.name}} {{f}}
-            {%endfor%}
-            </div>
-            <div id="empty">
-
+            <div id="times">
+                <div id="fields">
+                    {{form.as_p}}
+                </div>
             </div>
         </div>
         {%endfor%}
@@ -34,9 +32,9 @@
 </style>
 <script>
     $(document).ready(function() {
-        section = 0;
+        fields = 0;
         $("#add-another").click(function() {
-            $("#11").clone().appendTo($("<div></div>").attr("id", "section" + section++).appendTo("#empty"));
+            $("#fields").clone().appendTo($("<div></div>").attr("id", "fields_" + fields++).appendTo("#times"));
         })
 });
 </script>
