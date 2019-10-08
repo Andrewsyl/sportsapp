@@ -9,7 +9,7 @@
             {{form.prefix}}
             <div id="11">{%for f in form%}
                 {{f.name}} {{f}}
-                {%endfor%}
+            {%endfor%}
             </div>
             <div id="empty">
 
@@ -31,17 +31,14 @@
   clear: left;
 }
 
-
 </style>
 <script>
     $(document).ready(function() {
-        form_count = 0;
+        section = 0;
         $("#add-another").click(function() {
-            $("#11").clone().appendTo("#empty");
-
+            $("#11").clone().appendTo($("<div></div>").attr("id", "section" + section++).appendTo("#empty"));
         })
 });
-
 </script>
 {% endblock stuff %}
 
