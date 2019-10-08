@@ -7,10 +7,17 @@
         {% for form in forms%}
         <div class="box">
             {{form.prefix}}
-            {{form.as_p}}
+            <div id="11">{%for f in form%}
+                {{f.name}} {{f}}
+                {%endfor%}
+            </div>
+            <div id="empty">
+
+            </div>
         </div>
         {%endfor%}
         <input type="submit" value="Save" name="">
+        <p><a href="#" id="add-another">Add Book</a></p>
     </form>
 </div>
 <style>
@@ -24,6 +31,17 @@
   clear: left;
 }
 
+
 </style>
+<script>
+    $(document).ready(function() {
+        form_count = 0;
+        $("#add-another").click(function() {
+            $("#11").clone().appendTo("#empty");
+
+        })
+});
+
+</script>
 {% endblock stuff %}
 
