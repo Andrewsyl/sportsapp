@@ -38,6 +38,7 @@ def create_timetable_times(request):
     days = Day.objects.filter(club=club)
     forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in Day.objects.all()]
     if request.POST:
+        thing = request.POST.get('Thursday-end_time')
         if [cf.is_valid() for cf in forms]:
             for n, k in enumerate(forms):
                 start_time = k['start_time'].data

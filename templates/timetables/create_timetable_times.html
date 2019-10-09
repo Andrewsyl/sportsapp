@@ -12,7 +12,7 @@
                     {{form.as_p}}
                 </div>
             </div>
-            <p><a href="#" class="day_button" id="add_another_{{form.prefix}}">Add Book</a></p>
+            <p><a href="#" class="day_button" id="add_another_{{form.prefix}}">Add Period</a></p>
         </div>
         {%endfor%}
         <input type="submit" value="Save" name="">
@@ -38,7 +38,7 @@
             day = $(this).attr('id')
             day = day.split("_")
             day = day[day.length - 1]
-            $("#fields_" + day).clone().appendTo($("<div></div>").attr("id", "fields " + "_day_" + fields++).appendTo("#times_" + day));
+            $("#fields_" + day).clone().appendTo($("<div></div>").attr("id", "fields " + "_day_" + fields++).attr("name", "fields" + "_day_" + fields++).appendTo("#times_" + day));
         })
 });
 </script>
