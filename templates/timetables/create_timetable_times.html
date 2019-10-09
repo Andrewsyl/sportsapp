@@ -5,17 +5,18 @@
 <div class="container">
     <form method="POST">{% csrf_token %}
         {% for form in forms%}
-        <div class="box">
+        <div class="box" id="day_{{form.prefix}}">
             {{form.prefix}}
-            <div id="times">
-                <div id="fields">
+            <div id="times_{{form.prefix}}">
+                <div id="fields_{{form.prefix}}">
                     {{form.as_p}}
                 </div>
             </div>
+            <p><a href="#" class="day_button" id="add_another_{{form.prefix}}">Add Book</a></p>
         </div>
         {%endfor%}
         <input type="submit" value="Save" name="">
-        <p><a href="#" id="add-another">Add Book</a></p>
+
     </form>
 </div>
 <style>
@@ -33,8 +34,11 @@
 <script>
     $(document).ready(function() {
         fields = 0;
-        $("#add-another").click(function() {
-            $("#fields").clone().appendTo($("<div></div>").attr("id", "fields_" + fields++).appendTo("#times"));
+        $(".day_button").click(function(e) {
+            day = $(this).attr('id')
+            day = day.split("_")
+            day = day[day.length - 1]
+            $("#fields_" + day).clone().appendTo($("<div></div>").attr("id", "fields " + "_day_" + fields++).appendTo("#times_" + day));
         })
 });
 </script>
