@@ -4,6 +4,7 @@ $(document).ready(function() {
             day = $(this).attr('id')
             day = day.split("_")
             day = day[day.length - 1]
-            $("#fields_" + day).clone().appendTo($("<div></div>").attr("id", "fields " + "_day_" + fields++).attr("name", "fields" + "_day_" + fields++).appendTo("#times_" + day));
+            fields++;
+            $("#fields_" + day + "_0").clone().appendTo("#times_" + day).attr("id", "fields_" + day + '_' + fields).attr("name", "fields_" + day + '_' + fields);
         })
 });
