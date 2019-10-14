@@ -36,17 +36,20 @@ def create_timetable_times(request):
     club = request.user.club
     # Periods.objects.all().delete()
     days = Day.objects.filter(club=club)
-    forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in Day.objects.all()]
+    forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in
+             Day.objects.all()]
     if request.POST:
-        thing = request.POST.get('fields_Tuesday_3')
-        if [cf.is_valid() for cf in forms]:
-            for n, k in enumerate(forms):
-                start_time = k['start_time'].data
-                end_time = k['end_time'].data
-                period = Periods(start_time=start_time, end_time=end_time, day=Day.objects.all()[n])
-                period.save()
+        # if [cf.is_valid() for cf in forms]:
+        for d in days:
+            for num in range(5):
+                start_time = request.POST.get(d.name + '-start_time' + '_' + str(num), None)
+                end_time = request.POST.get(d.name + '-start_time' + '_' + str(num), None)
+                if not start_time or not end_time:
+                    continue
+            # period = Periods(start_time=start_time, end_time=end_time, day=Day.objects.all()[n])
+            # period.save()
 
-            return redirect('/')
+        return redirect('/')
 
     context = {
         'forms': forms,

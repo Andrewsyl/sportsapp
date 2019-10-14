@@ -1,5 +1,5 @@
 $(document).ready(function() {
-//        fields = 0;
+            fields = 0;
 //        $(".day_button").click(function(e) {
 //            day = $(this).attr('id')
 //            day = day.split("_")
@@ -14,8 +14,14 @@ $(document).ready(function() {
 //
 //        })
 
-        var current_id = 0;
-        $('.day_button').click(function(){
+        $('.remove_button').click(function(){
+            day = $(this).attr('id')
+            day = day.split("_")
+            day = day[day.length - 1]
+            $("#times_" + day + " div").last().remove();
+        })
+
+        $('.add_button').click(function(){
             day = $(this).attr('id')
             day = day.split("_")
             day = day[day.length - 1]
@@ -24,15 +30,15 @@ $(document).ready(function() {
         })
 
         function nextElement(element,day){
+            var current_id = 0
             var newElement = element.clone();
-            var id = current_id+1;
-            current_id = id;
+            while ($("#fields" + "_" + day + "_" + current_id).length > 0){
+                current_id++
+            }
             newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id));
             newElement.attr("name",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id));
-            var field = $('select', newElement).attr("id");
-            //field = field.slice(0,field.length - 1) + "_" + current_id
-
-            $('select', newElement).attr("name", field);
+            var field = $('select', newElement).attr("name");
+            $('select', newElement).attr("name", $('select', newElement).attr("name") + "_" + current_id);
             newElement.appendTo("#times_" + day);
         }
 
