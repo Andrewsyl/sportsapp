@@ -18,7 +18,9 @@ $(document).ready(function() {
             day = $(this).attr('id')
             day = day.split("_")
             day = day[day.length - 1]
-            $("#times_" + day + " div").last().remove();
+            if ($('#times_' + day).children().length > 1) {
+                $("#times_" + day + " div").last().remove();
+             };
         })
 
         $('.add_button').click(function(){
@@ -35,7 +37,7 @@ $(document).ready(function() {
             while ($("#fields" + "_" + day + "_" + current_id).length > 0){
                 current_id++
             }
-            newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id));
+            newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id)).attr('class','times_field');
             newElement.attr("name",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id));
             var field = $('select', newElement).attr("name");
             $('select', newElement).attr("name", $('select', newElement).attr("name") + "_" + current_id);
