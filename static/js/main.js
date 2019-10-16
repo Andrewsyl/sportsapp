@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
             fields = 0;
 //        $(".day_button").click(function(e) {
 //            day = $(this).attr('id')
@@ -27,8 +28,7 @@ $(document).ready(function() {
             day = $(this).attr('id')
             day = day.split("_")
             day = day[day.length - 1]
-            nextElement($("#fields_"+day+"_0"),day);
-
+            nextElement($("#fields_" + day + "_0"),day);
         })
 
         function nextElement(element,day){
