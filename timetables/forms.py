@@ -44,8 +44,8 @@ class PeriodCreateForm(forms.ModelForm):
         required=False,
         choices=HOURS,
     )
-    set_field_html_name(start_time, 'start_time_0')
-    set_field_html_name(end_time, 'end_time_0')
+    # set_field_html_name(start_time, 'start_time_0')
+    # set_field_html_name(end_time, 'end_time_0')
 
     class Meta:
         model = Periods
