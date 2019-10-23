@@ -30,3 +30,12 @@
     .after-box {
         clear: left;
     }
+
+    .time_picker {
+      border-radius:36px;
+    }
+    .period {
+        border: 1px solid #ccc;
+        border-radius: 16px;
+        padding: 10px;
+    }

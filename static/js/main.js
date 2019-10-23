@@ -23,7 +23,7 @@ $(document).ready(function() {
             while ($("#fields" + "_" + day + "_" + current_id).length > 0){
                 current_id++
             }
-            newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id)).attr('class','times_field');
+            newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id)).attr('class','period');
             newElement.removeAttr('name')
             var field_start = $('select', newElement.children().eq(0)).attr("name") + '_' + current_id;
             var field_end = $('select', newElement.children().eq(1)).attr("name") + '_' + current_id;
@@ -32,5 +32,19 @@ $(document).ready(function() {
             $('select', newElement.children().eq(1)).attr("name", field_end);
             newElement.appendTo("#times_" + day);
         }
+
+
+         $('.time_picker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 60,
+                minTime: '10',
+                maxTime: '6:00pm',
+                defaultTime: '11',
+                startTime: '16:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+         });
+
 
 });

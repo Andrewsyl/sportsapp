@@ -4,22 +4,24 @@
 
 <div class="container">
     <form method="POST">{% csrf_token %}
+        <input type="submit" value="Save" name="">
         {% for form in forms%}
         <div class="box" id="day_{{form.prefix}}">
             {{form.prefix}}
             <p><a href="#" class="add_button" id="add_another_{{form.prefix}}">Add Period</a></p>
             <p><a href="#" class="remove_button" id="remove_{{form.prefix}}">Remove Period</a></p>
             <div id="times_{{form.prefix}}">
-                <div id="fields_{{form.prefix}}_0" name="fields_{{form.prefix}}_0" class="times_field">
+                <div id="fields_{{form.prefix}}_0" name="fields_{{form.prefix}}_0" class="period">
                     {{form.as_p}}
                     <!--<input type="text" name="timepicker" class="timepicker"/>-->
                 </div>
             </div>
         </div>
         {%endfor%}
-        <input type="submit" value="Save" name="">
 
     </form>
+
+
 </div>
 <style>
 
