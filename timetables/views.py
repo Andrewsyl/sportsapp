@@ -39,15 +39,15 @@ def create_timetable_times(request):
     forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in
              Day.objects.all()]
     if request.POST:
-        # if [cf.is_valid() for cf in forms]:
         for d in days:
             for num in range(10):
-
                 day_name = d.name
                 if num == 0:
-                    day_name = ''
-                start_time = request.POST.get(day_name + 'start_time_' + str(num), None)
-                end_time = request.POST.get(day_name + 'start_time_' + str(num), None)
+                    field_number = ''
+                else:
+                    field_number = '_' + str(num)
+                start_time = request.POST.get(day_name + '-start_time' + field_number, None)
+                end_time = request.POST.get(day_name + '-end_time' + field_number, None)
                 if not start_time or not end_time:
                     break
             # period = Periods(start_time=start_time, end_time=end_time, day=Day.objects.all()[n])
