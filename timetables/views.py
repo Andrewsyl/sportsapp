@@ -50,8 +50,8 @@ def create_timetable_times(request):
                 end_time = request.POST.get(day_name + '-end_time' + field_number, None)
                 if not start_time or not end_time:
                     break
-                period = Periods(start_time=start_time, end_time=end_time, day=list(Day.objects.filter(club=club))[0])
-                period.save()
+                # period = Periods(start_time=start_time, end_time=end_time, day=list(Day.objects.filter(club=club))[0])
+                # period.save()
 
         return redirect('/')
 

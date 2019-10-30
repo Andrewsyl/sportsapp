@@ -15,6 +15,20 @@ $(document).ready(function() {
             day = day.split("_")
             day = day[day.length - 1]
             nextElement($("#fields_" + day + "_0"),day);
+
+            $('.time_picker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 5,
+                minTime: '10',
+                maxTime: '6:00pm',
+                defaultTime: '10',
+                startTime: '07:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true
+         });
+
+
         })
 
         function nextElement(element,day){
@@ -24,27 +38,17 @@ $(document).ready(function() {
                 current_id++
             }
             newElement.attr("id",(element.attr("id").split("_")[0] + "_" + day + "_" + current_id)).attr('class','period');
-            newElement.removeAttr('name')
-            var field_start = $('select', newElement.children().eq(0)).attr("name") + '_' + current_id;
-            var field_end = $('select', newElement.children().eq(1)).attr("name") + '_' + current_id;
+            //newElement.removeAttr('name')
+            var field_start = $('input', newElement.children().eq(0)).attr("name") + '_' + current_id;
+            var field_end = $('input', newElement.children().eq(1)).attr("name") + '_' + current_id;
 
-            $('select', newElement.children().eq(0)).attr("name", field_start);
-            $('select', newElement.children().eq(1)).attr("name", field_end);
+            $('input', newElement.children().eq(0)).attr("name", field_start);
+            $('input', newElement.children().eq(1)).attr("name", field_end);
             newElement.appendTo("#times_" + day);
         }
 
 
-         $('.time_picker').timepicker({
-                timeFormat: 'h:mm p',
-                interval: 5,
-                minTime: '10',
-                maxTime: '6:00pm',
-                defaultTime: '10',
-                startTime: '07:00',
-                dynamic: false,
-                dropdown: true,
-                scrollbar: true
-         });
+
 
 
 });
