@@ -5,6 +5,7 @@
 <div class="container">
     <form method="POST">{% csrf_token %}
         <input type="submit" value="Save" name="">
+        <br>
         {% for form in forms%}
         <div class="box" id="day_{{form.prefix}}">
             {{form.prefix}}

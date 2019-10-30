@@ -36,11 +36,11 @@ $(document).ready(function() {
 
          $('.time_picker').timepicker({
                 timeFormat: 'h:mm p',
-                interval: 60,
+                interval: 5,
                 minTime: '10',
                 maxTime: '6:00pm',
-                defaultTime: '11',
-                startTime: '16:00',
+                defaultTime: '10',
+                startTime: '07:00',
                 dynamic: false,
                 dropdown: true,
                 scrollbar: true
