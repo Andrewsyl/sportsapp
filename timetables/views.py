@@ -34,10 +34,11 @@ def create_timetable_days(request):
 @login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
-    # Periods.objects.all().delete()
+    Periods.objects.all().delete()
     days = Day.objects.filter(club=club)
     forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in
              Day.objects.all()]
+    # periods = Periods.objects.filter(day__club=club)
     if request.POST:
         for d in days:
             for num in range(10):
@@ -50,8 +51,8 @@ def create_timetable_times(request):
                 end_time = request.POST.get(day_name + '-end_time' + field_number, None)
                 if not start_time or not end_time:
                     break
-                # period = Periods(start_time=start_time, end_time=end_time, day=list(Day.objects.filter(club=club))[0])
-                # period.save()
+                period = Periods(start_time=start_time, end_time=end_time, day=list(Day.objects.filter(club=club))[0])
+                period.save()
 
         return redirect('/')
 
