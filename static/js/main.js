@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+         function run_time(){
+             $('.time_picker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 5,
+                minTime: '10',
+                maxTime: '6:00pm',
+                defaultTime: '10',
+                startTime: '07:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true
+             });
+             }
+
         fields = 0;
         $('.remove_button').click(function(){
             day = $(this).attr('id')
@@ -15,18 +29,8 @@ $(document).ready(function() {
             day = day.split("_")
             day = day[day.length - 1]
             nextElement($("#fields_" + day + "_0"),day);
+            run_time()
 
-            $('.time_picker').timepicker({
-                timeFormat: 'h:mm p',
-                interval: 5,
-                minTime: '10',
-                maxTime: '6:00pm',
-                defaultTime: '10',
-                startTime: '07:00',
-                dynamic: true,
-                dropdown: true,
-                scrollbar: true
-         });
 
 
         })
@@ -47,7 +51,7 @@ $(document).ready(function() {
             newElement.appendTo("#times_" + day);
         }
 
-
+        run_time()
 
 
 

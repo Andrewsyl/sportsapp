@@ -17,7 +17,7 @@ def create_timetable_days(request):
     club = request.user.club
     # Day.objects.all().delete()
     form = TimetableCreateForm(request.POST or None)
-    if len(list(Day.objects.filter(club=club))) > 0:
+    if Day.objects.filter(club=club):
         return redirect('/timetables/create_timetable_times')
     if form.is_valid():
         for item in form['Days']:
@@ -32,9 +32,15 @@ def create_timetable_days(request):
 
 
 @login_required(login_url='/login/')
+def display_timetable(request):
+    return redirect('/')
+
+
+@login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
-    Periods.objects.all().delete()
+    if Periods.objects.filter(club=club):
+        return redirect('/timetables/display_timetable')
     days = Day.objects.filter(club=club)
     forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in
              Day.objects.all()]
@@ -51,11 +57,12 @@ def create_timetable_times(request):
                 end_time = request.POST.get(day_name + '-end_time' + field_number, None)
                 if not start_time or not end_time:
                     break
-                period = Periods(start_time=start_time, end_time=end_time, day=list(Day.objects.filter(club=club))[0])
+                period = Periods(start_time=start_time, end_time=end_time, club=club,
+                                 day=list(Day.objects.filter(club=club))[0])
                 period.save()
 
         return redirect('/')
-
+    Periods.objects.all().delete()
     context = {
         'forms': forms,
         'days': days,

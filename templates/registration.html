@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block stuff %}
-<div class="container">
+<div class="container registration_box">
     <form method="POST">{% csrf_token %}
         {% if user.club %}{%else%}{{form_club.as_p}}{%endif%}
         {{form.as_p}}

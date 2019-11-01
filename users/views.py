@@ -69,7 +69,6 @@ def club_create(request):
     form = ClubCreateForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
-        # request.user.club = Club()
         instance.save()
         return redirect('/student_list/')
     context = {
