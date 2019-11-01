@@ -33,7 +33,7 @@ def create_timetable_days(request):
 
 @login_required(login_url='/login/')
 def display_timetable(request):
-    return redirect('/')
+    return render(request, 'timetables/timetable_display.html')
 
 
 @login_required(login_url='/login/')
