@@ -8,6 +8,7 @@ from users.forms import ClubCreateForm
 from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 # Create your views here.
@@ -33,17 +34,46 @@ def create_timetable_days(request):
 
 @login_required(login_url='/login/')
 def display_timetable(request):
-    return render(request, 'timetables/timetable_display.html')
+    club = request.user.club
+    events = Periods.objects.filter(day__club=club)
+    # context = {'stuff': events}
+    # return render(request, 'timetables/timetable_display.html', context)
 
+    periods = Periods.objects.filter(day__club=club)
+
+    # if filters applied then get parameter and filter based on condition else return object
+    if request.GET:
+        # event_arr = []
+        # for i in periods:
+        #     event_sub_arr = {}
+        #     event_sub_arr['title'] = i.event_name
+        #     start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        #     end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        #     event_sub_arr['start'] = start_date
+        #     event_sub_arr['end'] = end_date
+        #     event_arr.append(event_sub_arr)
+        return HttpResponse()
+
+    context = {
+        "events": periods,
+        # "get_event_types": get_event_types,
+
+    }
+    return render(request, 'timetables/timetable_display.html', context)
+
+@login_required(login_url='/login/')
+def delete_timetable(request):
+    Periods.objects.all().delete()
+    return render(request, '/')
 
 @login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
+    # Periods.objects.all().delete()
     if Periods.objects.filter(club=club):
         return redirect('/timetables/display_timetable')
     days = Day.objects.filter(club=club)
-    forms = [PeriodCreateForm(request.POST or None, prefix=str(day.name), instance=Periods()) for day in
-             Day.objects.all()]
+    forms = [PeriodCreateForm(request.POST or None, prefix=str(day), instance=Periods()) for day in Day.objects.all()]
     # periods = Periods.objects.filter(day__club=club)
     if request.POST:
         for d in days:
@@ -53,8 +83,11 @@ def create_timetable_times(request):
                     field_number = ''
                 else:
                     field_number = '_' + str(num)
-                start_time = request.POST.get(day_name + '-start_time' + field_number, None)
-                end_time = request.POST.get(day_name + '-end_time' + field_number, None)
+                try:
+                    start_time = datetime.strptime(request.POST.get(day_name + '-start_time' + field_number, None).split(' ')[0], '%H:%M')
+                    end_time = datetime.strptime(request.POST.get(day_name + '-end_time' + field_number, None).split(' ')[0], '%H:%M')
+                except:
+                    break
                 if not start_time or not end_time:
                     break
                 period = Periods(start_time=start_time, end_time=end_time, club=club,

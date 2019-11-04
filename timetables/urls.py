@@ -8,6 +8,7 @@ urlpatterns = [
     path('create_timetable_days/', views.create_timetable_days, name='create_timetable_days'),
     path('create_timetable_times/', views.create_timetable_times, name='create_timetable_times'),
     path('display_timetable/', views.display_timetable, name='display_timetable'),
+    path('delete_timetable/', views.delete_timetable, name='delete_timetable'),
 ]
 
 if settings.DEBUG:

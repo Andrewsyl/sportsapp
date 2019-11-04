@@ -3,7 +3,45 @@
 
 {% block stuff %}
 
-TEST
+<h2 align="center"><a href="#">Time Table</a></h2>
+
+<br/>
+<div class="container">
+    <a href="/appname/detail/{{ job.id }}/"><button>Delete Timetable</button></a>
+    <div id="calendar"></div>
+</div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+            defaultDate: '2016-07-19',
+            defaultView: 'agendaWeek',
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: [
+                {% for i in events %}
+                {
+                    title: "{{ i.event_name}}",
+                    start: '{{ i.start_time|date:"H:i" }}',
+                    end: '{{ i.end_time|date:"H:i" }}',
+
+                },
+                {% endfor %}
+
+            ]
+        });
+
+
+    });
+
+    </script>
 
 
 {% endblock stuff %}
