@@ -39,7 +39,6 @@ def display_timetable(request):
     # context = {'stuff': events}
     # return render(request, 'timetables/timetable_display.html', context)
 
-    periods = Periods.objects.filter(day__club=club)
 
     # if filters applied then get parameter and filter based on condition else return object
     if request.GET:
@@ -55,16 +54,18 @@ def display_timetable(request):
         return HttpResponse()
 
     context = {
-        "events": periods,
+        "events": events,
         # "get_event_types": get_event_types,
 
     }
     return render(request, 'timetables/timetable_display.html', context)
 
+
 @login_required(login_url='/login/')
 def delete_timetable(request):
     Periods.objects.all().delete()
-    return render(request, '/')
+    return redirect('/')
+
 
 @login_required(login_url='/login/')
 def create_timetable_times(request):
@@ -84,14 +85,16 @@ def create_timetable_times(request):
                 else:
                     field_number = '_' + str(num)
                 try:
-                    start_time = datetime.strptime(request.POST.get(day_name + '-start_time' + field_number, None).split(' ')[0], '%H:%M')
-                    end_time = datetime.strptime(request.POST.get(day_name + '-end_time' + field_number, None).split(' ')[0], '%H:%M')
+                    start_time = datetime.strptime(
+                        request.POST.get(day_name + '-start_time' + field_number, None).split(' ')[0], '%H:%M')
+                    end_time = datetime.strptime(
+                        request.POST.get(day_name + '-end_time' + field_number, None).split(' ')[0], '%H:%M')
                 except:
                     break
                 if not start_time or not end_time:
                     break
                 period = Periods(start_time=start_time, end_time=end_time, club=club,
-                                 day=list(Day.objects.filter(club=club))[0])
+                                 day=d)
                 period.save()
 
         return redirect('/')

@@ -7,8 +7,14 @@
 
 <br/>
 <div class="container">
-    <a href="/appname/detail/{{ job.id }}/"><button>Delete Timetable</button></a>
+        {% for i in events %}
+                {% if i.day == "Tuesday"%}
+    <p>{{i.day}}</p>
+            {%endif%}
+            {%endfor%}
+    <a href="/timetables/delete_timetable/"><button>Delete Timetable</button></a>
     <div id="calendar"></div>
+
 </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>-->
@@ -21,18 +27,21 @@
     $(document).ready(function() {
 
         $('#calendar').fullCalendar({
-            defaultDate: '2016-07-19',
+            //defaultDate: '2016-07-19',
             defaultView: 'agendaWeek',
+            firstDay: 1,
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: [
                 {% for i in events %}
+                {% if "Tuesday" == "Tuesday" %}
                 {
-                    title: "{{ i.event_name}}",
+                    title: "{{ i.day}}",
                     start: '{{ i.start_time|date:"H:i" }}',
                     end: '{{ i.end_time|date:"H:i" }}',
 
                 },
+                        {%endif%}
                 {% endfor %}
 
             ]
