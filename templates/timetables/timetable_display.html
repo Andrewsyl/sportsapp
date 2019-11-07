@@ -26,6 +26,16 @@
 
     $(document).ready(function() {
 
+        function get_date(p1, p2, p3) {
+
+            var myDate = new Date(p2);
+            myDate.setDate(myDate.getDate() + parseInt(p1));
+            var nunn = myDate
+            nunn = nunn.toJSON();
+            nunn = nunn + ' ' + p3
+            return nunn
+        }
+
         $('#calendar').fullCalendar({
             //defaultDate: '2016-07-19',
             defaultView: 'agendaWeek',
@@ -34,14 +44,14 @@
             eventLimit: true, // allow "more" link when too many events
             events: [
                 {% for i in events %}
-                {% if "Tuesday" == "Tuesday" %}
+
                 {
                     title: "{{ i.day}}",
-                    start: '{{ i.start_time|date:"H:i" }}',
-                    end: '{{ i.end_time|date:"H:i" }}',
+                    start: get_date('{{i.day_number}}','{{date}}','{{ i.start_time|date:"H:i" }}'),
+                    end: get_date('{{i.day_number}}','{{date}}','{{ i.end_time|date:"H:i" }}'),
 
                 },
-                        {%endif%}
+
                 {% endfor %}
 
             ]

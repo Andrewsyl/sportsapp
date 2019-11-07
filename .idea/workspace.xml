@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="17d9aa8b-82d9-4b25-9a6b-d5b604d7ad99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/timetables/timetable_display.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/timetables/timetable_display.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timetables/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/timetables/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/timetables/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/timetables/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +33,11 @@
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.6" value="5" />
-          <entry key="project.open.time.7" value="10" />
+          <entry key="project.open.time.6" value="6" />
+          <entry key="project.open.time.7" value="11" />
           <entry key="project.open.time.8" value="18" />
           <entry key="project.open.time.9" value="7" />
-          <entry key="project.opened" value="112" />
+          <entry key="project.opened" value="114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -46,7 +46,7 @@
           <entry key="css" value="4" />
           <entry key="html" value="65" />
           <entry key="js" value="11" />
-          <entry key="py" value="376" />
+          <entry key="py" value="383" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
@@ -56,43 +56,43 @@
           <entry key="HTML" value="65" />
           <entry key="JavaScript" value="11" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="376" />
+          <entry key="Python" value="383" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="153" />
-          <entry key="html" value="4018" />
+          <entry key="html" value="4370" />
           <entry key="js" value="1353" />
-          <entry key="py" value="11225" />
+          <entry key="py" value="11517" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="153" />
-          <entry key="HTML" value="4018" />
+          <entry key="HTML" value="4370" />
           <entry key="JavaScript" value="1353" />
-          <entry key="Python" value="11225" />
+          <entry key="Python" value="11517" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/timetables/timetable_display.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="406">
+              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/main.js">
+        <entry file="file://$PROJECT_DIR$/timetables/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="221">
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -127,7 +127,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/timetables/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="102">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -136,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/timetables/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="580">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -149,10 +149,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python3/Lib/site-packages/django/core/handlers/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -250,17 +259,17 @@
         <option value="$PROJECT_DIR$/templates/registration.html" />
         <option value="$PROJECT_DIR$/static/css/index.css" />
         <option value="$PROJECT_DIR$/users/views.py" />
-        <option value="$PROJECT_DIR$/timetables/models.py" />
         <option value="$PROJECT_DIR$/timetables/urls.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="//polaris_belt/Sandymount_Production_01/010_BM_Development/090_Ftrack/Actions/SUPG_scenebreakdown/hook/SUPG_scenebreakdown.py" />
+        <option value="$PROJECT_DIR$/timetables/models.py" />
         <option value="$PROJECT_DIR$/timetables/views.py" />
         <option value="$PROJECT_DIR$/templates/timetables/timetable_display.html" />
-        <option value="//polaris_belt/Sandymount_Production_01/010_BM_Development/090_Ftrack/Actions/SUPG_scenebreakdown/hook/SUPG_scenebreakdown.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2382" />
     <option name="y" value="-13" />
     <option name="width" value="1918" />
@@ -554,22 +563,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2552" y="-8" width="1936" height="1216" extended-state="7" />
+    <frame x="2552" y="-8" width="1936" height="1216" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14765458" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14605543" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32871652" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29178208" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29178208" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.33702677" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32871652" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32963988" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49946696" weight="0.3102493" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.32132965" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.32132965" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49946696" weight="0.30470914" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32963988" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -620,33 +629,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>101</line>
+          <line>106</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>35</line>
+          <line>39</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>72</line>
-          <option name="timeStamp" value="47" />
+          <line>61</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>71</line>
-          <option name="timeStamp" value="49" />
+          <line>76</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/timetables/views.py</url>
-          <line>36</line>
-          <option name="timeStamp" value="55" />
+          <line>40</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -659,71 +663,65 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="events[0].day" language="Python" />
-        <watch expression="Periods.objects.filter(club=club)" language="Python" />
-        <watch expression="list(Periods.objects.filter(club=club))" />
-        <watch expression="len(Periods.objects.filter(club=club))" />
-        <watch expression="Periods.objects.filter(club=club)" />
-        <watch expression="Day.objects.filter(club=club)" />
-        <watch expression="request.POST.get(day_name + '-start_time' + field_number" />
+        <watch expression="start_time" />
+        <watch expression="day_name + '-start_time' + field_number, None).split(' ')[0]" />
+        <watch expression="day_name + '-start_time' + field_number, None).split(' ')[0]" />
+        <watch expression="(day_name + '-start_time' + field_number, None).split(' ')[0]" />
         <watch expression="request.POST.get(day_name + '-start_time' + field_number, None)" />
-        <watch expression="periods[0]" language="Python" />
+        <watch expression="events[0]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>events[0].day</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>type(events[0].day)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
         <expression-string>events[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>periods[0]</expression-string>
+        <expression-string>events[0].name</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Periods.objects.filter(club=club)</expression-string>
+        <expression-string>date.day_name</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>periods[0].day.name</expression-string>
+        <expression-string>date.day</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>periods[0].day</expression-string>
+        <expression-string>date.weekday()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>periods[0].day()</expression-string>
+        <expression-string>date.today()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>periods[0]['day']</expression-string>
+        <expression-string>date.weekday</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>date.day.weekday</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>date.day()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/Shiiit/timetable.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/012_BitBucket/fTrack/010_ftrack_api_copy/BM_linkTasks/BM_links_updateStatus_listener.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -937,20 +935,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/timetables/models.py">
+    <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/012_BitBucket/MongoDb/Queries/updated_queries/preformace_review_mongo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        <state relative-caret-position="306">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/090_Ftrack/Actions/SUPG_scenebreakdown/hook/SUPG_scenebreakdown.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/090_Ftrack/Actions/create_Tasks/hook/PL_createtasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="918">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/timetables/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -961,41 +985,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/012_BitBucket/MongoDb/Queries/updated_queries/preformace_review_mongo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/timetables/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python3/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python3/Lib/site-packages/django/contrib/auth/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -1013,30 +1006,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/timetables/timetable_display.html">
+    <entry file="file://$PROJECT_DIR$/timetables/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state relative-caret-position="221">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file:////polaris_belt/Sandymount_Production_01/010_BM_Development/090_Ftrack/Actions/SUPG_scenebreakdown/hook/SUPG_scenebreakdown.py">
+    <entry file="file://C:/Python3/Lib/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python3/Lib/site-packages/django/contrib/auth/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/timetables/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="580">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/timetables/timetable_display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
         </state>
       </provider>
     </entry>

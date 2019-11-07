@@ -8,10 +8,14 @@ from users.forms import ClubCreateForm
 from django.contrib import auth, messages
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
+import datetime
 
 
-# Create your views here.
+def get_weekdays():
+    today = datetime.date.today()
+    date = today - datetime.timedelta(days=-(today.weekday() + 1), weeks=1)
+    return date.strftime('%Y-%m-%d')
+
 
 @login_required(login_url='/login/')
 def create_timetable_days(request):
@@ -39,7 +43,6 @@ def display_timetable(request):
     # context = {'stuff': events}
     # return render(request, 'timetables/timetable_display.html', context)
 
-
     # if filters applied then get parameter and filter based on condition else return object
     if request.GET:
         # event_arr = []
@@ -53,7 +56,9 @@ def display_timetable(request):
         #     event_arr.append(event_sub_arr)
         return HttpResponse()
 
+    date = get_weekdays()
     context = {
+        'date': date,
         "events": events,
         # "get_event_types": get_event_types,
 
@@ -70,14 +75,14 @@ def delete_timetable(request):
 @login_required(login_url='/login/')
 def create_timetable_times(request):
     club = request.user.club
-    # Periods.objects.all().delete()
+    # Day.objects.all().delete()
     if Periods.objects.filter(club=club):
         return redirect('/timetables/display_timetable')
     days = Day.objects.filter(club=club)
     forms = [PeriodCreateForm(request.POST or None, prefix=str(day), instance=Periods()) for day in Day.objects.all()]
     # periods = Periods.objects.filter(day__club=club)
     if request.POST:
-        for d in days:
+        for day_num, d in enumerate(days):
             for num in range(10):
                 day_name = d.name
                 if num == 0:
@@ -85,16 +90,16 @@ def create_timetable_times(request):
                 else:
                     field_number = '_' + str(num)
                 try:
-                    start_time = datetime.strptime(
+                    start_time = datetime.datetime.strptime(
                         request.POST.get(day_name + '-start_time' + field_number, None).split(' ')[0], '%H:%M')
-                    end_time = datetime.strptime(
+                    end_time = datetime.datetime.strptime(
                         request.POST.get(day_name + '-end_time' + field_number, None).split(' ')[0], '%H:%M')
-                except:
+                except Exception as e:
                     break
                 if not start_time or not end_time:
                     break
                 period = Periods(start_time=start_time, end_time=end_time, club=club,
-                                 day=d)
+                                 day=d, day_number=day_num)
                 period.save()
 
         return redirect('/')
