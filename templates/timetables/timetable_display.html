@@ -32,6 +32,7 @@
             myDate.setDate(myDate.getDate() + parseInt(p1));
             var nunn = myDate
             nunn = nunn.toJSON();
+            nunn = nunn.split('T')[0]
             nunn = nunn + ' ' + p3
             return nunn
         }
