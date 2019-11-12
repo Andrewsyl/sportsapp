@@ -3,18 +3,12 @@
 
 {% block stuff %}
 
-<h2 align="center"><a href="#">Time Table</a></h2>
+<h2 align="center">TimeTable</h2>
 
 <br/>
 <div class="container">
-        {% for i in events %}
-                {% if i.day == "Tuesday"%}
-    <p>{{i.day}}</p>
-            {%endif%}
-            {%endfor%}
     <a href="/timetables/delete_timetable/"><button>Delete Timetable</button></a>
     <div id="calendar"></div>
-
 </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>-->
@@ -25,7 +19,7 @@
 <script>
 
     $(document).ready(function() {
-
+        //paramerters are day_number,date and time
         function get_date(p1, p2, p3) {
 
             var myDate = new Date(p2);
@@ -38,7 +32,12 @@
         }
 
         $('#calendar').fullCalendar({
-            //defaultDate: '2016-07-19',
+            //defaultDate: {{date}},
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
             defaultView: 'agendaWeek',
             firstDay: 1,
             editable: true,
@@ -48,9 +47,9 @@
 
                 {
                     title: "{{ i.day}}",
-                    start: get_date('{{i.day_number}}','{{date}}','{{ i.start_time|date:"H:i" }}'),
-                    end: get_date('{{i.day_number}}','{{date}}','{{ i.end_time|date:"H:i" }}'),
-
+                    start: '{{ i.start_time|date:"H:i" }}',
+                    end: '{{ i.end_time|date:"H:i" }}',
+                    dow: [{{i.day_number}}+1]
                 },
 
                 {% endfor %}

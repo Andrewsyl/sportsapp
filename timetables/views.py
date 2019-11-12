@@ -13,7 +13,7 @@ import datetime
 
 def get_weekdays():
     today = datetime.date.today()
-    date = today - datetime.timedelta(days=-(today.weekday() + 1), weeks=1)
+    date = today - datetime.timedelta(days=-(today.weekday() - 1))
     return date.strftime('%Y-%m-%d')
 
 
@@ -102,7 +102,7 @@ def create_timetable_times(request):
                                  day=d, day_number=day_num)
                 period.save()
 
-        return redirect('/')
+        return redirect('/timetables/display_timetable')
     Periods.objects.all().delete()
     context = {
         'forms': forms,
