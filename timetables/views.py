@@ -40,28 +40,13 @@ def create_timetable_days(request):
 def display_timetable(request):
     club = request.user.club
     events = Periods.objects.filter(day__club=club)
-    # context = {'stuff': events}
-    # return render(request, 'timetables/timetable_display.html', context)
-
-    # if filters applied then get parameter and filter based on condition else return object
     if request.GET:
-        # event_arr = []
-        # for i in periods:
-        #     event_sub_arr = {}
-        #     event_sub_arr['title'] = i.event_name
-        #     start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-        #     end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-        #     event_sub_arr['start'] = start_date
-        #     event_sub_arr['end'] = end_date
-        #     event_arr.append(event_sub_arr)
         return HttpResponse()
 
     date = get_weekdays()
     context = {
         'date': date,
         "events": events,
-        # "get_event_types": get_event_types,
-
     }
     return render(request, 'timetables/timetable_display.html', context)
 
